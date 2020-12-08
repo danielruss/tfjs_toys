@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="logress.js"></script>
+  </head>
+  <body>
+    <h1>Working with tensorflow</h1>
+    <script>
+      async function LRexample() {
+        // this is the example from Andrew Ng's class
+        let w = tf.tensor2d([[1], [2]]);
+        let b = 2;
+        let x = tf.tensor2d([
+          [1, 2, -1],
+          [3, 4, -3.2],
+        ]);
+        let y = tf.tensor2d([[1, 0, 1]]);
+
+        //[dw, db, cost] = await propagate(w, b, x, y);
+        //dw.print();
+        //console.log("db: ", db, " cost: ", cost);
+        [w, b, costs] = await optimize(w, b, x, y, 1000, 0.009, true);
+        w.print();
+        console.log(`b: ${b}  costs:`, costs);
+      }
+      LRexample();
+    </script>
+  </body>
+</html>
